@@ -1,0 +1,15 @@
+*.log
+*.out
+*.pdf
+!_draft/img/*.pdf
+!img/*pdf
+!answers/img/*pdf
+!2023-08-first-review-submitted/*pdf
+*.synctex.gz
+*.blg
+*.aux
+*.bbl
+*.eps
+*.dvi
+bibliography/
+!frontPage.pdf

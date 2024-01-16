@@ -1,0 +1,76 @@
+\subsection{Detailed research plan}
+% 2000 words
+
+In the previous section we explained the two identified challenges of \testreuse: lack of information in the GUI and uncertainty of \testreuse when semantic matching is not helpful.
+In this section we explain how objectives of the project will address this challenges. 
+
+\bigskip
+\noindent
+\textbf{O1:} to augment semantic matching with visual information.  
+We will use computer vision to identify semantics of GUI elements. 
+
+\bigskip
+The first challenge is related to availability of information in the GUI. 
+When users interact with the GUI they rely on both text and visual clues in the GUI to navigate in the application and perform their intended functionality. 
+An app with user friendly-ui considers expectation of users that partly raised from prior experience with other apps. 
+Thus, users expect elements with same appearance provide similar functionalities. 
+For example, a user expects  a text box with a magnifier icon close it performs search functionality. 
+Current semantic matching approaches for \testreuse do not consider visual clues, while using them can be  beneficial specially in absent of textual information.
+
+\bigskip
+There different studies the leverage compute vision in generating test cases. 
+AppFlow\cite{Hu:appflow:FSE:2018} uses computer vision to recognize GUI widgets. 
+In a similar way, we  will use computer vision to  classify GUI widget in the application to a canonical representation that we know their semantic in advance. 
+%
+First step is to define set of canonical widgets.
+We both use set of canonical widgets in the literature , and we will review a large set of popular applications to identify most common widgets that has not been considered in the literature.
+% 
+Then, we consider one or more labels for each canonical widget. 
+For example, we assign "back" label to the icon with a left arrow. 
+%
+The next step  we build a visual classifier. 
+If data sets from previous studies would be available and sufficient, we can use them. 
+Other wise we will create a data widgets images. 
+
+\bigskip
+\noindent
+After having the classifier ready, we will use it enhance semantic matching. 
+For the widgets related to source events and target candidate, we locate the widget in the screen using its coordination which is available in the DOM information and crop the location form the screen shot of the mobile phone.
+Then we feed the widget's image to the classifier and identify it canonical type and add the label of the canonical widget to other textual descriptors of the widget.
+In this way we unify visual and textual information available in the GUI together and the conventional semantic matching approaches can handle the rest. 
+
+
+\bigskip
+\noindent
+\textbf{O2:} to use external resources of information containing patterns of functionalities. We will use LLM to translate test cases before reuse.
+
+\bigskip
+When users interact a new applications they, consider two strategies: 
+a) they use their prior knowledge of using applications with similar functionalities to navigate through the new application. 
+b) They leverage patterns of interactions that they leaned  in using the new application. 
+Additionally, they can search in the web to understand functionalities of an application. 
+LLM models can imitate both strategies of users:
+a) They can recognize sequence of interactions belongs to what pattern
+b)  They contain knowledge about wide variety of topics including applications functionalities.
+
+\bigskip
+We will use LLM to add more information from external resources to mitigate lack of information in the GUI.
+In a simple word LLM transforms the input text to human like text. 
+We can formulate problem of reusing test cases as giving sequence of text that represents source test case and contextual information as input to LLM and receive a target test case as output.  
+In the \testreuse scenario, textual context is information available in the GUI of target application. 
+The LLM model recognize the interaction pattern that source test belongs to, (for example, sign-in) then generates a test case for the target application with respect to the contextual information.
+
+\bigskip
+
+Prompt generation
+Fine-tuning
+
+Then, we use the transformed test case as input of a conventional GUI test reuse to validate and enhance the test case. 
+
+\bigskip
+\noindent
+\textbf{O3: }to make test reuse robust in present of uncertainty. We use reinforcement learning to guide test reuse in absent of a matching event.
+
+o	When matching is not possible, RL agent takes actions to guide test reuse to a new state 
+o	RL explores GUI at the beginning to have a comprehensive model of GUI
+o	Using LLM to generate inputs to explore GUI more smoothly (This approach for input generation already exists)

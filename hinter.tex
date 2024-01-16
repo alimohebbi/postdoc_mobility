@@ -1,0 +1,47 @@
+\documentclass[10pt]{article}
+
+% Adjust page margins if needed
+\usepackage[margin=1in]{geometry}
+
+% Include necessary packages
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{xspace}
+
+% Set font to Times New Roman
+\usepackage{mathptmx}
+\usepackage[T1]{fontenc}
+
+\input{glossory.tex}
+
+% Title, author, and date
+\title{\vspace{-3em}Your Proposal Title }
+\author{}
+\date{}
+
+\begin{document}
+
+	\maketitle
+	
+	\input{summary.tex}
+	\section{Research project}
+	\input{state_of_the_art.tex}
+
+	\input{own_research.tex}
+
+	\input{plan.tex}
+	
+	\input{schedule.tex}
+
+	\input{impact.tex}
+	
+	\input{career.tex}
+	
+	
+	
+	
+	% Add bibliography if needed
+	 \bibliographystyle{plain}
+	 \bibliography{bibliography/bibliography.bib}
+	
+\end{document}
