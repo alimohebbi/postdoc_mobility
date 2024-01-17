@@ -61,16 +61,44 @@ In the \testreuse scenario, textual context is information available in the GUI 
 The LLM model recognize the interaction pattern that source test belongs to, (for example, sign-in) then generates a test case for the target application with respect to the contextual information.
 
 \bigskip
+Integrating LLM in the \testreuse process requires two steps: Prompt Generation and Fine-tuning. 
+%
+Each prompt includes a source test case, and the contextual information of the target application. 
+We consider the textual information as set of available event in each windows.
+%
+In Fine-tuning, we create a set of prompts and their answers.
+A prompt answers is a test case that is migrated by an expert. 
+% 
+The output may contain events that are unreachable immediately from the previous event and  some stepping events needs to be considered to become reachable.
+ Thus, we use the transformed test case as input of a conventional GUI test reuse to validate and add the stepping events to the test case. 
 
-Prompt generation
-Fine-tuning
 
-Then, we use the transformed test case as input of a conventional GUI test reuse to validate and enhance the test case. 
+%%% Risk
+\bigskip
+A possible risk is that the generated test cases contains many unreachable events that bears too much cost on the conventional \testreuse approaches.
+An alternative way to address this risk is to consider deliberate prompt engineering and presenting the contextual information such that contain graph nature of the GUI as each window in the GUI (nodes) includes multiple possible events and each events transfers the current state to another window (edges).
 
 \bigskip
 \noindent
-\textbf{O3: }to make test reuse robust in present of uncertainty. We use reinforcement learning to guide test reuse in absent of a matching event.
+\textbf{O3:} to make \testreuse robust in present of uncertainty. We use Reinforcement Learning to guide test reuse in absent of a matching event.
 
-o	When matching is not possible, RL agent takes actions to guide test reuse to a new state 
-o	RL explores GUI at the beginning to have a comprehensive model of GUI
-o	Using LLM to generate inputs to explore GUI more smoothly (This approach for input generation already exists)
+\bigskip
+In the cases that a matching event is unavailable in the current state, \testreuse approaches use the GUI model of the application to create stepping event and reach an state where the matching event is available. 
+\testreuse approaches create the GUI model  by static analysis of the application and complete it as they go through the \testreuse process. 
+But, the GUI model is often incomplete and events may remain unreachable. 
+Other times semantic matching cannot find any matching event neither in the current state nor in the GUI model. 
+In such conditions that semantic matching is ineffective, \atm and \adaptdroid consider a random action, however, that is not always helpful and may result in many false positives. 
+We will use Reinforcement Learning in the \testreuse to handle the uncertain condition.
+
+\bigskip
+Training a Reinforcement Learning agent requires defining states, reward function, and actions.
+We define the states as set of textual attributes of widget available in the GUI state and we consider the reward function the same as the reward function of AutoBlackBox~\cite{Mariani:Autoblacktest:ICSE:2011} which is  how much the new state is different in comparison to the previous states. 
+%
+We use Reinforcement Learning in two stages: 
+First, we use RL to explore the GUI before start of \testreuse process. 
+Since the reward functions values  novel states it the agent will explore GUI effectively and we can create a more comprehensive model of the GUI automatically. 
+Second, in conditions that semantic matching is  ineffective, the \testreuse approach queries the agent for the next actions.
+Our intuition is that the agent will transform the state to novel state that might contains an event match. 
+We will limit number of consequent actions that agent takes to handle conditions that a matching event do not exist at all.
+
+

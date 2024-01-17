@@ -1,0 +1,98 @@
+\subsection{Schedule and milestones}
+% 1000 words
+
+\input{tables/schedule-table.tex}
+
+Table~\ref{tab:research-plan} summaries the schedule and milestones of this project.
+We consider one milestone for each of the three objectives and achieving a  milestone requires completing  three phases: Study, Experiments, and Report. 
+In the study phase we review the most recent related works, study relevant tools and techniques, and do a feasibility study. 
+The experiment phase involves doing empirical investigation for validating our new approach. 
+In the report phase, we publish results of the experiments in the research conferences and journals.
+Below we explain in detail how we achieve each milestones. 
+
+\bigskip
+\noindent
+\textbf{O1 - Internal Resources:}  
+
+\bigskip
+\noindent
+In the study phase of O1 we review new related works in the area of application of computer vision for GUI testing. 
+There are recent studies on recognition of widgets and their intents~\cite{zhu2021widgetrecog, white:WidgetDetection:ISSTA:2019}. 
+We look into replication package of this studies and if their tools and data was available we proceed with using them.  
+
+\bigskip
+There is a risk that existing approaches for recognition of widgets will not be replicable. 
+In that case we need to take an alternative route which is classifier type, building training set, and training a classifier.  
+%Risk alternative
+Therefore, we study computer vision approaches to identify most suitable classifier. 
+The most common approach for image classification is Convolutional Neural Networks (CNN)~\cite{lecun1995convolutional}. 
+Using CNN requires careful choice of its architecture depending on the down stream tasks. 
+We will investigate the most popular choices that includes: ResNet~\cite{he:ResNet:CVPR:2016}, Inception~\cite{szegedy:inception:CVPR:2015}, MobileNet~\cite{howard:mobilenets:arxiv:2017}.
+
+\bigskip
+We start the experiments with a feasibility study in which we create a classifier and determine if it will improve the semantic matching. 
+Also, we can examines multiple options for the classifier and choose the most promising one. 
+In the feasibility study we use the classifier in semantic matching in isolation from the \testreuse process similarly to our previous study~\cite{mariani:SemFinder:ISSTA:2021}. 
+Then, we integrate the classifier to out \tme framework to generate test cases and evaluate their quality. 
+We compare the results of generating test cases with and without augmenting semantic matching by visual information.
+
+\bigskip
+Finally, we will submit result of our feasibility study in a workshop of conference and results of full experiments in a top software engineering conference. 
+
+%%% O2
+
+
+\bigskip
+\noindent
+\textbf{O2 - External Resources:}  
+
+\bigskip
+\noindent
+%study
+In the study phase of O2 we review related works that use LLM models for generating test cases~\cite{Zimmermann:GPT3GUITest:2023:ICSTW, liu:GUIInputLLM:ICSE:2023}. 
+Also, We will review studies that are related to prompt engineering.  
+A recent study shows tuning prompt improves performance of code summarization  26\% on average~\cite{wang:prompt:FSE:2023}.
+
+%Experiment
+\bigskip
+We start the experiments with a feasibility study in which we examine with different LLM options and prompt pattern. 
+We will experiment on translating limited number of test cases by  LLM and manually inspect their quality to identify the  combination of LLM and prompt that looks promising. 
+Then, we integrate the LLM translator in our framework to generate test cases.
+We compare the results of generating test cases with and without LLM translator to quantify the impact of our proposed approach.
+
+%Report
+\bigskip
+Finally, we will submit result of our feasibility study in a workshop of conference and results of full experiments in a top software engineering conference. 
+
+%%% O3
+
+
+\bigskip
+\noindent
+\textbf{O3 - Robustness:}  
+
+\bigskip
+\noindent
+%study
+In the study phase of O2 we review related work that use Reinforcement Learning  for generating test cases~\cite{Mariani:GUI:STVR:2014,Vuong:RLTest:A-Test:2018,Pan:QTesting:ISSTA:2020,Romdhana:ARES:TOSEM:2022}. 
+In our study we will investigate in depth about what are the suitable options for creating suitable  Reinforcement Learning  agent including: The Reinforcement Learning  approach,  presentation of states, reward functions. 
+
+%Experiment
+\bigskip
+We start the experiments with a feasibility study in which we examine with different options. 
+We will experiment on navigating GUI by Reinforcement Learning agents and manually inspect based on number of distinctive windows that they can explore in a given amount of time. 
+Then, we integrate the agent in our framework to generate test cases while using the components that we have added from O1, O2 to have full integration of approaches that we proposed in this project. 
+We will use effectiveness of adding the agent in three setups:
+\begin{inparaenum}[a)]
+	\item The agent only executes before test reuse to make GUI model more complete
+	\item The agent only executes when semantic matching is uncertain
+	\item The agent executes both in the beginning and uncertain conditions
+	\item The agent executes both in the beginning, uncertain conditions
+\end{inparaenum}
+
+%Report
+\bigskip
+Finally, we will submit result of results of full experiments in a top software engineering journal to conclude the project. 
+
+
+

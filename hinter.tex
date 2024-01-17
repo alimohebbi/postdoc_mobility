@@ -2,14 +2,18 @@
 
 % Adjust page margins if needed
 \usepackage[margin=1in]{geometry}
-
+ \usepackage{tabularray}
 % Include necessary packages
 \usepackage{setspace}
 \usepackage{titlesec}
 \usepackage{xspace}
-
+\usepackage{array}
+\usepackage{multirow}
+ \usepackage{rotating}
+\usepackage{tabularx}
 % Set font to Times New Roman
 \usepackage{mathptmx}
+\usepackage{paralist}
 \usepackage[T1]{fontenc}
 
 \input{glossory.tex}
@@ -23,25 +27,25 @@
 
 	\maketitle
 	
-	\input{summary.tex}
+	\input{sections/summary.tex}
 	\section{Research project}
-	\input{state_of_the_art.tex}
+	\input{sections/state_of_the_art.tex}
 
-	\input{own_research.tex}
+	\input{sections/own_research.tex}
 
-	\input{plan.tex}
+	\input{sections/plan.tex}
 	
-	\input{schedule.tex}
+	\input{sections/schedule.tex}
 
-	\input{impact.tex}
+	\input{sections/impact.tex}
 	
-	\input{career.tex}
+	\input{sections/career.tex}
 	
 	
 	
 	
 	% Add bibliography if needed
 	 \bibliographystyle{plain}
-	 \bibliography{bibliography/bibliography.bib}
+	 \bibliography{bibliography/bibliography.bib,local.bib}
 	
 \end{document}
