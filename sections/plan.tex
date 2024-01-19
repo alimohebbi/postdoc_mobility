@@ -1,11 +1,8 @@
 \subsection{Detailed research plan}
 % 2000 words
 
-%In the previous section we explained the two identified challenges of \testreuse:
 In section~\ref{sec:own-research} we described the two challenges of \testreuse that we identified in our studies:
-%lack of information in the GUI and uncertainty of \testreuse when semantic matching is not helpful.
 Lack of textual information in the GUI, and uncertainty of current semantic matching approaches in absent of one-to-one mapping. 
-%In this section we explain how objectives of the project will address these challenges. 
 In this section we elaborate what are the objectives of \project project and how they address the two challenges.
 
 \bigskip
@@ -22,17 +19,15 @@ For example, users expect text box with a nearby magnifier icon  provide the sea
 Current semantic matching approaches for \testreuse are agnostic to visual cues, while both user and developer rely on these cues to communicate possible functionalities in the app. 
 
 
-%%% Maybe I need to move it to related works
+
 \bigskip
+\ali{Maybe I need to move it to related works.}
 Researchers used computer vision in many software engineering areas such as test repair~\cite{Stocco:VisualRepair:FSE:2018,Pan:Meter:TSE:2022,Xu:GUIDER:ISSTA:2021}  test generation~\cite{YazdaniBanafsheDaragh:DEEPGUI:ASE:2021,Li:Humanoid:ASE:2019,Hu:appflow:FSE:2018}, and widget recognition~\cite{zhu2021widgetrecog, white:WidgetDetection:ISSTA:2019}.
 White et al. proposed an approach to improve random GUI testing by widget detection~\cite{white:WidgetDetection:ISSTA:2019}. 
-%However, their approach only determines type of the widget and not its semantic.
 Their approach determines the widget type like menu or text box, however, it does not provide information about semantics of widgets.
-%Zhu et al. proposed an approach for identifying intent of widget and labeling them. 
 Zhu et al. proposed an approach for identifying the intent of widgets and labeling them to describes the widget function~\cite{zhu2021widgetrecog}. 
 However, their approach is not examined in GUI testing context. 
 
-%%% Edite from here !!!!
 
 \bigskip
 We will create a module named \imagelabeler encompassing the encode-decoder architecture to transforms widget images to the textual description of their functionality.
@@ -43,95 +38,93 @@ Then, \ede queries \imagelabeler to get description of  widget images.
 
 
 \bigskip
-%Training or fine-tuning models to generate text usually requires large train set and expensive computational resources which could be out of scope of this study. 
 Training or fine-tuning models for generating text requires large train set and expensive computational resources that could be out of scope of this study. 
-%If we encounter this blocking risk, we can take an alternative approach that relies on classification of images.
 If this risk occurs, we will use image classification as an alternative approach.
-%Similar to \texttt{AppFlow} approach, we  will  classify GUI widgets to a canonical representation that we define in advance. 
 We will define canonical representations of widget  (classes) in advance and build a classifier that assigns widget to the classes.
-%We assign labels to the canonical widgets that we will use to enhance the semantic matching.
 We will label the canonical widgets with description of their functionalities.
-%For example, we assign "back" label to the icon with a left arrow and \imagelabeler sends "back" label  to \ede for any widget that classifier consider in this class.  
 For example, we assign "back" label to the icon with a left arrow.
  When \ede queries \imagelabeler, first it classifies the widget, then it returns the label of the canonical widget.
-%We will use both set of canonical widgets in the literature , and we will review a large set of popular applications to identify most common widgets that has not been considered in the literature.
 We will consider available canonical widgets in the literature and identify the most common widgets that are missing in the literature. 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 \bigskip
 \noindent
-\textbf{O2:} to use external resources of information containing patterns of functionalities. We will use LLM to translate test cases before reuse.
+\textbf{O2:} to augment \testreuse with external resources of information.
+We will use LLM to transform source test cases and migrate the transformed.
 
 \bigskip
-When users interact a new applications they, consider two strategies: 
-a) they use their prior knowledge of using applications with similar functionalities to navigate through the new application. 
-b) They leverage patterns of interactions that they leaned  in using the new application. 
-Additionally, they can search in the web to understand functionalities of an application. 
-LLM models can imitate both strategies of users:
-a) They can recognize sequence of interactions belongs to what pattern
-b)  They contain knowledge about wide variety of topics including applications functionalities.
+When users interact with new applications they consider two strategies to effectively use the apps:
+\begin{inparaenum}[a)]
+\item they recall prior  interaction patterns of  applications with similar functionalities
+\item They search in the web to learn about functionalities of an application.
+\end{inparaenum}
+LLM models can imitate the both strategies:
+First, LLM models can recognize patterns in sequence of text and  GUI interactions can be textually represented as sequence of actions. 
+Second, LLM models embed knowledge of variety of topics including applications functionalities.
+Additionally, LLM models can understand semantic similarity of text. 
+Thus, transforming test cases by LLM can benefit from both incorporating external information, and helping semantic matching by making the source test case more compatible with target application terminology.
+
+
 
 \bigskip
-We will use LLM to add more information from external resources to mitigate lack of information in the GUI.
-In a simple word LLM transforms the input text to human like text. 
-We can formulate problem of reusing test cases as giving sequence of text that represents source test case and contextual information as input to LLM and receive a target test case as output.  
-In the \testreuse scenario, textual context is information available in the GUI of target application. 
-The LLM model recognize the interaction pattern that source test belongs to, (for example, sign-in) then generates a test case for the target application with respect to the contextual information.
+We will  address the first challenge of \testreuse, lack of information in the GUI, by incorporating external information available in the LLM models.
+We can formulate \testreuse as a prompt that its answer is a migrated test case for the target application.
+The prompt contains a source test case and the information in the GUI of source and target application that provides context of the prompt. 
+The LLM model recognizes the interaction pattern of the source test case (For example, Sign-In pattern), then generates a test case with respect to the contextual information.
+
 
 \bigskip
-Integrating LLM in the \testreuse process requires two steps: Prompt Generation and Fine-tuning. 
-%
-Each prompt includes a source test case, and the contextual information of the target application. 
-We consider the textual information as set of available event in each windows.
-%
-In Fine-tuning, we create a set of prompts and their answers.
-A prompt answers is a test case that is migrated by an expert. 
-% 
-The output may contain events that are unreachable immediately from the previous event and  some stepping events needs to be considered to become reachable.
- Thus, we use the transformed test case as input of a conventional GUI test reuse to validate and add the stepping events to the test case. 
+Using LLM for specilized tasks such as \testreuse requires two steps: Prompt Generation and Fine-tuning. 
+We will generate prompts that include source test cases as sequence of events and the contextual information as textual descriptors of events in the source test case and the target application.
+We will tune the LLM models with a set of prompt and their answers, which is ground truth for migrating the source test case in the prompt.
+The generated test case by LLM may contain events that are unreachable immediately from the previous events and they require stepping events.
+ Thus, we validate and complete the transformed test case by reusing it as input of \selector as depicted in figure~\ref{fig:architecture}. 
+
 
 
 %%% Risk
 \bigskip
-A possible risk is that the generated test cases contains many unreachable events that bears too much cost on the conventional \testreuse approaches.
-An alternative way to address this risk is to consider deliberate prompt engineering and presenting the contextual information such that contain graph nature of the GUI as each window in the GUI (nodes) includes multiple possible events and each events transfers the current state to another window (edges).
+A possible risk is that the transformed test case by LLM contain too many unreachable events, which reduces the quality of the generated test cases.
+The reason is the defined prompt do not contain enough information  for LLM model to infer what actions are available in each state.
+If this risk occurs, we can carefully design a more complicated prompt that embeds \tam and convey permissible next evens after each selected event.
+
+
+
 
 \bigskip
 \noindent
-\textbf{O3:} to make \testreuse robust in present of uncertainty. We use Reinforcement Learning to guide test reuse in absent of a matching event.
+\textbf{O3:} to make \testreuse robust in present of uncertainty. 
+We will use Reinforcement Learning to guide \testreuse in absent of one-to-one matching.
 
 \bigskip
-In the cases that a matching event is unavailable in the current state, \testreuse approaches use the GUI model of the application to create stepping event and reach an state where the matching event is available. 
-\testreuse approaches create the GUI model  by static analysis of the application and complete it as they go through the \testreuse process. 
-But, the GUI model is often incomplete and events may remain unreachable. 
-Other times semantic matching cannot find any matching event neither in the current state nor in the GUI model. 
-In such conditions that semantic matching is ineffective, \atm and \adaptdroid consider a random action, however, that is not always helpful and may result in many false positives. 
-We will use Reinforcement Learning in the \testreuse to handle the uncertain condition.
+When a matching event is unavailable in the current state, \selector queries the \tam to find a path to the state where the matching event exist.
+\testreuse approaches initially build the \tam by static analysis of the target application and they complete the model as they observe new states while they  progress in migrating the source events.
+Usually, the \tam remains incomplete and misses many states and actions that leads to them.
+In the conditions where semantic matching become ineffective, \atm and \adaptdroid take a random action, but a matching event may remain unreachable and the random action increases the false positives rate. 
+
 
 \bigskip
-Training a Reinforcement Learning agent requires defining states, reward function, and actions.
-We define the states as set of textual attributes of widget available in the GUI state and we consider the reward function the same as the reward function of AutoBlackBox~\cite{Mariani:Autoblacktest:ICSE:2011} which is  how much the new state is different in comparison to the previous states. 
-%
-We use Reinforcement Learning in two stages: 
-First, we use RL to explore the GUI before start of \testreuse process. 
-Since the reward functions values  novel states it the agent will explore GUI effectively and we can create a more comprehensive model of the GUI automatically. 
-Second, in conditions that semantic matching is  ineffective, the \testreuse approach queries the agent for the next actions.
-Our intuition is that the agent will transform the state to novel state that might contains an event match. 
-We will limit number of consequent actions that agent takes to handle conditions that a matching event do not exist at all.
+We will use Reinforcement Learning in the \testreuse to make the \tam more complete and take actions in uncertain conditions.
+Training a Reinforcement Learning agent requires defining  states, reward function, and actions.
+%We define the states as set of textual attributes of widget available in the GUI state and we consider the reward function the same as the reward function of AutoBlackBox~\cite{Mariani:Autoblacktest:ICSE:2011} which is  how much the new state is different in comparison to the previous states. 
+We define the RL states as the set of textual attributes of widgets in the GUI states, reward function as how much the new state is different from previous ones, and actions as GUI events.
+
+\bigskip
+Figure~\ref{fig:architecture}, shows how the RL agent will be located in the \testreuse~\architecture.
+%We use Reinforcement Learning in two stages: 
+We will use a RL agent in two stages: 
+%First, we use RL to explore the GUI before start of \testreuse process. 
+%First, we use RL to explore the GUI before start of \testreuse process. 
+First, we will use the agent to explore the GUI and update the \tam before \testreuse.
+%Since the reward functions values  novel states it the agent will explore GUI effectively and we can create a more comprehensive model of the GUI automatically. 
+The reward function of the agent values novel states, thus it will explore the GUI effectively and builds a more comprehensive \tam.
+%Second, in conditions that semantic matching is  ineffective, the \testreuse approach queries the agent for the next actions.
+Second, when semantic matching is ineffective, the \selector queries the agent for the next event.
+%Our intuition is that the agent will transform the state to novel state that might contains an event match. 
+%Our intuition is that the agent will move  to a novel state that might contains a matching event. 
+Our intuition is that if a matching event is unavailable in the current state or unreachable from \tam, we might find the matching event in a novel state.
+We will limit number of consecutive queries from the agent to handle conditions where a matching event do not exist at all.
 
 
