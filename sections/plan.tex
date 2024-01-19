@@ -1,43 +1,76 @@
 \subsection{Detailed research plan}
 % 2000 words
 
-In the previous section we explained the two identified challenges of \testreuse: lack of information in the GUI and uncertainty of \testreuse when semantic matching is not helpful.
-In this section we explain how objectives of the project will address this challenges. 
+%In the previous section we explained the two identified challenges of \testreuse:
+In section~\ref{sec:own-research} we described the two challenges of \testreuse that we identified in our studies:
+%lack of information in the GUI and uncertainty of \testreuse when semantic matching is not helpful.
+Lack of textual information in the GUI, and uncertainty of current semantic matching approaches in absent of one-to-one mapping. 
+%In this section we explain how objectives of the project will address these challenges. 
+In this section we elaborate what are the objectives of \project project and how they address the two challenges.
 
 \bigskip
 \noindent
-\textbf{O1:} to augment semantic matching with visual information.  
-We will use computer vision to identify semantics of GUI elements. 
+\textbf{O1:} to augment semantic matching with internal information other than text.  
+We will use computer vision to incorporate visual information of GUI in the semantic matching.  
 
 \bigskip
-The first challenge is related to availability of information in the GUI. 
-When users interact with the GUI they rely on both text and visual clues in the GUI to navigate in the application and perform their intended functionality. 
-An app with user friendly-ui considers expectation of users that partly raised from prior experience with other apps. 
-Thus, users expect elements with same appearance provide similar functionalities. 
-For example, a user expects  a text box with a magnifier icon close it performs search functionality. 
-Current semantic matching approaches for \testreuse do not consider visual clues, while using them can be  beneficial specially in absent of textual information.
+We will overcome the first challenge by using both textual and visual information available in the GUI.
+In fact, users interact with apps by relying on both textual and visual information in the GUI to navigate through app windows and execute their intended functionalities. 
+Additionally, most apps consider UI design best practices which emphasis on compliance of UI with users prior knowledge.  
+ Thus, users expect elements with same visual cues provide similar functionalities across different applications.
+For example, users expect text box with a nearby magnifier icon  provide the search functionality.
+Current semantic matching approaches for \testreuse are agnostic to visual cues, while both user and developer rely on these cues to communicate possible functionalities in the app. 
+
+
+%%% Maybe I need to move it to related works
+\bigskip
+Researchers used computer vision in many software engineering areas such as test repair~\cite{Stocco:VisualRepair:FSE:2018,Pan:Meter:TSE:2022,Xu:GUIDER:ISSTA:2021}  test generation~\cite{YazdaniBanafsheDaragh:DEEPGUI:ASE:2021,Li:Humanoid:ASE:2019,Hu:appflow:FSE:2018}, and widget recognition~\cite{zhu2021widgetrecog, white:WidgetDetection:ISSTA:2019}.
+White et al. proposed an approach to improve random GUI testing by widget detection~\cite{white:WidgetDetection:ISSTA:2019}. 
+%However, their approach only determines type of the widget and not its semantic.
+Their approach determines the widget type like menu or text box, however, it does not provide information about semantics of widgets.
+%Zhu et al. proposed an approach for identifying intent of widget and labeling them. 
+Zhu et al. proposed an approach for identifying the intent of widgets and labeling them to describes the widget function~\cite{zhu2021widgetrecog}. 
+However, their approach is not examined in GUI testing context. 
+
+%%% Edite from here !!!!
 
 \bigskip
-There different studies the leverage compute vision in generating test cases. 
-AppFlow\cite{Hu:appflow:FSE:2018} uses computer vision to recognize GUI widgets. 
-In a similar way, we  will use computer vision to  classify GUI widget in the application to a canonical representation that we know their semantic in advance. 
-%
-First step is to define set of canonical widgets.
-We both use set of canonical widgets in the literature , and we will review a large set of popular applications to identify most common widgets that has not been considered in the literature.
-% 
-Then, we consider one or more labels for each canonical widget. 
-For example, we assign "back" label to the icon with a left arrow. 
-%
-The next step  we build a visual classifier. 
-If data sets from previous studies would be available and sufficient, we can use them. 
-Other wise we will create a data widgets images. 
+We will create a module named \imagelabeler encompassing the encode-decoder architecture to transforms widget images to the textual description of their functionality.
+We will integrate the \imagelabeler to the \testreuse~\architecture  as depicted in figure~\ref{fig:architecture} to enhance the semantic matching.
+The \ede  will uses widgets coordination available in the DOM to crop images of widgets form the screenshot of the GUI.
+Then, \ede queries \imagelabeler to get description of  widget images.
+\ede adds the image description as another attribute of event descriptor $D$ and \matcher proceed as before.
+
 
 \bigskip
-\noindent
-After having the classifier ready, we will use it enhance semantic matching. 
-For the widgets related to source events and target candidate, we locate the widget in the screen using its coordination which is available in the DOM information and crop the location form the screen shot of the mobile phone.
-Then we feed the widget's image to the classifier and identify it canonical type and add the label of the canonical widget to other textual descriptors of the widget.
-In this way we unify visual and textual information available in the GUI together and the conventional semantic matching approaches can handle the rest. 
+%Training or fine-tuning models to generate text usually requires large train set and expensive computational resources which could be out of scope of this study. 
+Training or fine-tuning models for generating text requires large train set and expensive computational resources that could be out of scope of this study. 
+%If we encounter this blocking risk, we can take an alternative approach that relies on classification of images.
+If this risk occurs, we will use image classification as an alternative approach.
+%Similar to \texttt{AppFlow} approach, we  will  classify GUI widgets to a canonical representation that we define in advance. 
+We will define canonical representations of widget  (classes) in advance and build a classifier that assigns widget to the classes.
+%We assign labels to the canonical widgets that we will use to enhance the semantic matching.
+We will label the canonical widgets with description of their functionalities.
+%For example, we assign "back" label to the icon with a left arrow and \imagelabeler sends "back" label  to \ede for any widget that classifier consider in this class.  
+For example, we assign "back" label to the icon with a left arrow.
+ When \ede queries \imagelabeler, first it classifies the widget, then it returns the label of the canonical widget.
+%We will use both set of canonical widgets in the literature , and we will review a large set of popular applications to identify most common widgets that has not been considered in the literature.
+We will consider available canonical widgets in the literature and identify the most common widgets that are missing in the literature. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 \bigskip
