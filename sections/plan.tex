@@ -108,22 +108,14 @@ In the conditions where semantic matching become ineffective, \atm and \adaptdro
 \bigskip
 We will use Reinforcement Learning in the \testreuse to make the \tam more complete and take actions in uncertain conditions.
 Training a Reinforcement Learning agent requires defining  states, reward function, and actions.
-%We define the states as set of textual attributes of widget available in the GUI state and we consider the reward function the same as the reward function of AutoBlackBox~\cite{Mariani:Autoblacktest:ICSE:2011} which is  how much the new state is different in comparison to the previous states. 
 We define the RL states as the set of textual attributes of widgets in the GUI states, reward function as how much the new state is different from previous ones, and actions as GUI events.
 
 \bigskip
-Figure~\ref{fig:architecture}, shows how the RL agent will be located in the \testreuse~\architecture.
-%We use Reinforcement Learning in two stages: 
-We will use a RL agent in two stages: 
-%First, we use RL to explore the GUI before start of \testreuse process. 
-%First, we use RL to explore the GUI before start of \testreuse process. 
+Figure~\ref{fig:architecture}, shows how the \rlaganet will be located in the \testreuse~\architecture.
+We will use the \rlaganet in two stages: 
 First, we will use the agent to explore the GUI and update the \tam before \testreuse.
-%Since the reward functions values  novel states it the agent will explore GUI effectively and we can create a more comprehensive model of the GUI automatically. 
 The reward function of the agent values novel states, thus it will explore the GUI effectively and builds a more comprehensive \tam.
-%Second, in conditions that semantic matching is  ineffective, the \testreuse approach queries the agent for the next actions.
-Second, when semantic matching is ineffective, the \selector queries the agent for the next event.
-%Our intuition is that the agent will transform the state to novel state that might contains an event match. 
-%Our intuition is that the agent will move  to a novel state that might contains a matching event. 
+Second, when semantic matching is ineffective, the \selector queries the \rlaganet for the next event.
 Our intuition is that if a matching event is unavailable in the current state or unreachable from \tam, we might find the matching event in a novel state.
 We will limit number of consecutive queries from the agent to handle conditions where a matching event do not exist at all.
 
