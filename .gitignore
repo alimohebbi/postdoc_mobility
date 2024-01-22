@@ -2,7 +2,7 @@
 *.out
 *.pdf
 !_draft/img/*.pdf
-!img/*pdf
+!images/*.pdf
 !answers/img/*pdf
 !2023-08-first-review-submitted/*pdf
 *.synctex.gz
