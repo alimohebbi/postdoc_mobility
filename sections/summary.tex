@@ -1,5 +1,47 @@
 	\section{Summary of the research plan}
 	%1000 words
 	% What should be included in here? summary of all below sections?
-	
-	\sam{Sam can comment like this.}
+
+% What problem project aims to solve?
+In this project we define a set of approaches to generate test cases for testing software applications through their Graphical User Interface. 
+The generated test case are able to exercise the application under the test with realistic scenarios and reveal functional faults.
+
+\bigskip
+% What is the gap in the research?
+Testing software applications is crucial to increase quality of a software. 
+GUI testing tests software application at integration level to ensure its compliance to the functional requirements. 
+Usually developers write test cases manually, which is tedious task and bears substantial cost on organizations.
+Researcher have proposed many approaches to automate generating GUI test cases. 
+Most of these approaches only are able to maximize code coverage and reveal faults that lead to system crashes.
+Recently, researcher have proposed approaches that are aware of  semantics of applications and  test  intended functionality of the applications.
+
+\bigskip
+\testreuse is a promising category of automated GUI testing testing approaches that migrates tests of an application to another application with similar functionalities. 
+These approaches are far from prefect, which hinders their applicability in industrial environment.
+The current \testreuse approaches only rely on limited amount of information in the GUI to infer semantics and that leads to imprecise test migration with high uncertainty.
+
+\bigskip
+% What are the objectives? We do X to Y
+In this project, we will address current limitations of \testreuse approaches by
+\begin{inparaenum}[(i)]
+\item using visual information of GUI to incorporate internal information in test migrations
+\item using pattern of GUI interaction and web information to incorporate external information
+\item defining strategies to build comprehensive model of target application GUI that facilitates navigation of \testreuse approaches in the target applications
+\end{inparaenum}.
+
+% How we do that? We use technique W to do X
+\bigskip
+We will leverage Artificial Intelligence to define set of \testreuse approaches and integrate them together to create a \textbf{H}ighly \textbf{In}telligent \textbf{Te}st \textbf{R}euse (\project) approach.
+we will
+\begin{inparaenum}[(i)]
+\item incorporate Image Processing to extract visual information in the GUI
+\item use Large Language Models to integrate their vast knowledge and pattern recognition capabilities into \testreuse
+\item Reinforcement Learning  to efficiently build a model of target application GUI
+\end{inparaenum}
+
+% How we validate the approach?
+
+
+
+
+% What is the impact of the project?
