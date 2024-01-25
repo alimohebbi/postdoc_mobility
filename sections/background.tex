@@ -2,7 +2,32 @@
 
 %%% Background knowledge
 % What is GUI test case
-% What is stepping eventss
 % What is current state
 % What is GUI model
+
+A Graphical User Interface is a  forest hierarchical windows that only one of them at a time is active to be used.  
+Windows includes atomic element named widget that are characterize by attribute, such as text or locations.
+At any time the active window has a sate that encompasses attribute values of all visible widgets.
+Type of widget depends on their functionality and some of them expose user-actionable events for users to interact with the application.
+
+A GUI event is an atomic humane-computer interaction, such as click on a widget with the type button or fill an editable widget.
+An oracle event check the state of a widget. 
+For example, if a widget displays a specific text. 
+A GUI test is a sequence of events $\langle e_1,..., e_n\rangle$ on widgets of active windows.
+A test execution results transitioning the state of the active windows $S_{0} \xrightarrow{e_1} S_1 \xrightarrow{e_2} S_2 \ldots \xrightarrow{e_n} S_{n}$ 
+%\), 
+where $S_{i-1}$ and $S_i$ denote the states of the active window before and after the execution of $e_i$, respectively. 
+A GUI model (\tam) is a directed graph where node correspond to GUI states  and edges correspond to events that transition the the source node (state before event) to the target node (state after the event).
+% Test Reuse
 % Semantic matching is one-to-one and using GUI model alleviate this issue.
+% What is stepping events
+
+\testreuse is the process of migrating test cases across apps with similar functionalities. 
+\testreuse relies on semantic matching to find a corresponding event from the source test case in the target applications (one-to-one matching). 
+Semantic matching uses textual attributes of widgets to score similarity of events.
+The target test case may include stepping events, that are event not corresponding to any event in source test case.
+The stepping event are required to reach relevant states.
+The source test case may include  unmatchable events, that are event not corresponding to any event in target test case.
+\testreuse handles stepping and unmatchable by relying on \tam.
+
+
