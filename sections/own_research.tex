@@ -18,7 +18,7 @@ C1, C2, C3, C4, and C5 are the components that we identified in the current appr
 
 
 % Test Ruse work flow
-\bigskip
+\smallskip 
 \testreuse  includes two coarse grain parts: \generator and \matcher, which collaborate to migrate source test case $t^s$ to target test case $t^t$.
 \generator receives the $t^s$ and selects a match for each source event $e^s \in t^s$ in the target application $A^t$.
 For each $e^s$, the \generator considers a set of target candidate event $E^t$ from the \tam and the current GUI state. 
@@ -28,7 +28,7 @@ After iterating over all the $e^s \in t^s$, the selected target events from $A^t
 
 
 
-\bigskip
+\smallskip 
 In more detail, the \generator statically analyzes $A^t$ to create a \tam and updates the model as it progresses in migrating $t^s$.
 The \selector gathers a set of target candidate events $E^t$ for each event $e^s$ and selects from the candidates, which are sorted by \matcher.
 If the \selector selects an event from the current GUI state, it executes the event and adds the event to the migrated test case.
@@ -38,7 +38,7 @@ If the \selector does not select any event from $E^t$, it will skip the $e^s$.
 \testreuse approaches implement the \selector strategy differently.
 
 
-\bigskip
+\smallskip 
 The \matcher receives a query containing the $e^s$ and $E^t$, then the \ede (C3) extracts descriptors of events $D$.
 A descriptor consists of textual attributes associated with the widget of an event such as \textit{resource-id}.
 For each pair of $\langle D^s,  ~D_i^t\rangle$, the \sma queries the \wem to score similarity of their textual attribute, then it aggregates the scores to sort the $E^t$.
@@ -49,8 +49,7 @@ Each combination of instances of the \matcher components (C1-C4) yields a unique
  Figure~\ref{fig:architecture} shows four out of five \testreuse components are located in \matcher, which emphasizes on crucial role of semantic matching.
  This observation motivated us to in-depth study semantic matching, identify its limitations, and propose new solutions. 
 
-
-\bigskip
+\smallskip 
  First, we studied semantic matching in isolation from \testreuse to eliminate the side effects of other \testreuse parts~\cite{mariani:SemFinder:ISSTA:2021}.
 In our study, we created different \smconfigs to answer  a set of queries and we evaluated their performance to measure the effectiveness of instances and the impact of components.
 We considered instances from the literature, and we introduced a new instance for the \sma named \tool and a new \corpus named \gp that we collected from crawling around 1 million apps in Google Play. 
@@ -62,7 +61,7 @@ Also, our newly proposed instances outperformed the existing ones.
 
 
 
-\bigskip
+\smallskip 
 Second, in the study of semantic matching in isolation, we observed our newly proposed corpus \gp, which is specific to the mobile applications domain, leads to better results than general corpora.  
 However, the impact of the \corpus component was the lowest, indicating the instances of this component perform closely. 
 We hypothesize further specialization of the \corpus  potentially leads to better semantic matching.  
@@ -71,7 +70,7 @@ Our results showed that domain-specific models generally work better, but too mu
 
 
 
-\bigskip
+\smallskip 
 Third, we studied semantic matching in the \testreuse context (EMSE In Press).
 We built a framework named \tme that automatically migrates test cases with different \smconfigs and evaluates the test cases based on the fidelity metrics that have been proposed in the literature~\cite{zhao:fruiter:fse:2020}.
 In a nutshell, we used an \fscore metric that indicates how much the generated test case matches the source test case with respect to the ground truth.
@@ -82,7 +81,7 @@ We selected \nsampledcomb configurations and performed more than \nmigrations mi
 The results showed a strong to medium correlation between semantic matching and \testreuse, following the classification of Cohen~\cite{cohen:statisticalpower:Routledge:2013}.
 In our study, we  thoroughly discussed the impact of components, the effectiveness of instances, and how they can be affected by different setups such as choice of \selector and subject apps.
 
-\bigskip
+\smallskip 
 Figure~\ref{fig:MRR-F1-scatter} shows a part of our results that is related to the correlation of semantic matching and \testreuse.
 The red triangle indicates a random baseline configuration that randomly scores the similarity of events.
 The green square indicates an artificial perfect semantic matching that we synthesized based on the ground truth, and it  assigns a score of 1 to the correct match and 0 otherwise.
