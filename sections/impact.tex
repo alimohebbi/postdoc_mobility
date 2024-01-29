@@ -1,14 +1,8 @@
 \subsection{Relevance and impact of the research }
 
-\ali{to be revised}
 
-% section 6 of sam proposal
-% 750 words
-The approaches introduced in this project are applicable to all type of application that have GUI including E-commerc and mobile app markets.
-Today number of E-commerce has the revenue of more than USD 6 trillion \footnote{https://www.statista.com/topics/871/online-shopping/} and 
-The global mobile app development market size was valued at USD 362 billion in 2022\footnote{https://www.statista.com/outlook/dmo/app/worldwide}.
-The financial cost of software failure is substantial in these sectors. 
-Our approaches impact both research and industry as follows:
+Researchers focused on automated GUI testing in past decades as  suitable solution for reducing cost of integration testing, but the current solutions have not been wildly used by practitioners due to their limitations. 
+Our approaches addresses the limitations and impact both research and industry as follows:
 
 
 % on research 
@@ -19,18 +13,18 @@ Our approaches impact both research and industry as follows:
 \textbf{Research:}
 
 \noindent
-This project impacts the research areas of test generation by introducing following contributions:
+This project is an step toward mature  \testreuse approaches and it will impacts broader field of  GUI testing by following contributions:
 \begin{inparaenum}[(i)]
-\item Proposes techniques for addressing widget captioning problem
-\item Proposes set of pattern prompts that enhances formulating GUI testing  as prompt answering
-\item proposes strategies for building comprehensive \tam
+\item Proposes set of prompt patterns that formulates \testreuse as a prompt answering problem
+\item Proposes strategies for building comprehensive \tam
+\item Enhances effectiveness of semantic matching techniques.
 \end{inparaenum}
-More comprehensive GUI models can be used to improve current model-based test generation approaches.
-Advancement in semantic matching has a broader impact on software engineering domain, such as GUI Test Repair and Pattern-based test generation approaches that heavily rely on semantic matching .
-Test repair approaches needs to find replacement for broken events in a test case between to versions of app by finding a proper match from the broken event in the previous version to a semantically equivalent event in the new version.
-Pattern-based approaches rely on semantic matching to match element of an abstract pattern to actual events of the target application.
-Additionally, inferring semantic of GUI by approaches that we propose leads to improving accessibility of applications.
-The our approaches can infers semantics of GUI and the result would be translated to proper representation for users with visual impairment.  
+The first two contributions impact model-based approaches.
+First, integration of \tam in prompts opens direction of using LLM for model-based testing of application.
+Second, a comprehensive model leads to higher coverage.
+Effective semantic matching impacts Test Repair and Pattern-based test generation.
+Test repair approaches find replacements for events that are broken in a test case between two versions of an app by matching the broken event to a semantically equivalent event in the new version~\cite{Choudhary:Water:ETSE:2011,Stocco:VisualRepair:FSE:2018,Pan:Meter:TSE:2022}.
+Pattern-based approaches rely on semantic matching to match elements of an abstract pattern to actual events of the target application.
 
 
 \smallskip
@@ -38,12 +32,14 @@ The our approaches can infers semantics of GUI and the result would be translate
 \textbf{Industry:}
 
 \noindent
-We increase applicability of the software by making a reliable and effective \testreuse tool, \toolreuse. 
-We will finalize our approaches as a standalone tool that developer can easily use it and it reduces their effort.
-As a result quality of applications will increase, while the cost of development decrease wider employment of automated testing tools.
-Eventually, higher quality products increases businesses revenues.
-
-Advanced semantic matching techniques in our \testreuse approaches, not only have applicability in software development life-cycle such as testing, but also can be part of business logic. 
-Many business and organization uses available data on the web to make business decisions. 
-However, various sources may represent the same data differently and that decreases accuracy of data analysis.
-Advanced semantic matching approaches that we envies in this project can be leveraged to overcome this issue.
+The approaches that we introduce in this project are applicable to all types of applications that include GUI interactions, such as E-commerce and mobile apps.
+E-commerce sales exceeded 6 trillion U.S. dollars worldwide~\footnote{\href{https://www.statista.com/topics/871/online-shopping/}{E-commerce worldwide - statistics \& facts}} and
+the mobile app market has reached revenue of 467 billion dollars in 2023~\footnote{\href{https://www.statista.com/outlook/dmo/app/worldwide}{Total revenue in the App market}}.
+These commercial sectors are just a subset of industries that depend on GUI applications and financial cost of software failure is substantial in them.
+In this project, we will create a standalone tool, \rltool, that developers can use to reveal functional faults and improve quality of software.
+Ultimately, higher quality products increases businesses revenues.
+%
+Additionally, we will introduce an effective semantic matching technique that is applicable not only in testing, but also in business logic.
+Many organization analysis available data on the web to make business decisions or provide insights. 
+However, various sources may represent the same data differently that decreases accuracy of analysis. 
+Semantic matching approaches that we propose in this project can be leveraged to overcome such issues.
