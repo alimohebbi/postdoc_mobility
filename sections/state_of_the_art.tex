@@ -5,7 +5,7 @@
 \subsubsection{State of the art}
 GUI testing has been a popular field in software engineering over the past two decades. Researchers proposed many approaches that we classify into four categories: random-based, model-based, coverage-based, and similarity-based.
 Random-based approaches take random actions to interact with the GUI~\cite{machiry:dynodroid:FSE:2013,vos:testar:ijismd:2015,ermuth:monkey:ISSTA:2016}.
-Model-based approaches build a GUI model and generate test cases that cover the mode based on coverage criteria~\cite{Nguyen:GUITAR:ASEJ:2014,Li:DroidiBot:ICSE-C:2017,Gu:PractivalTest:ICSE:2019,Choi:swift:OOPSLA:2013}. 
+Model-based approaches build a GUI model and generate test cases that cover the model based on coverage criteria~\cite{Nguyen:GUITAR:ASEJ:2014,Li:DroidiBot:ICSE-C:2017,Gu:PractivalTest:ICSE:2019,Choi:swift:OOPSLA:2013}. 
 Coverage-based approaches employ search-based algorithms~\cite{Gross:exist:ISSTA:2012,mahmood:evodroid:FSE:2014,dong:TimaMachine:ICSE:2020} or symbolic execution to generate test cases that maximize code coverage~\cite{Ganov:GUIsymbolic:FMSE:2009,cheng:guicat:ASE:2016,Anand:conc:FSE:2012}.
 Similarity-based approaches use existing knowledge of testing functionalities of applications to generate test cases for applications with similar functionalities.
 All the categories except for similarity-based are agnostic to the semantics of the application under the test. 
@@ -58,13 +58,13 @@ Recently, researchers used Large Language Models (LLM) to generate inputs for ed
 \testreuse approaches are the most recent category of GUI test generations, which can expose functional faults by exercising realistic scenarios. Our review of the state of the art and our empirical studies of \testreuse~\cite{mariani:SemFinder:ISSTA:2021,khalili:DomainEmbedding:ICPC:2022} suggest we can address the limitations of current approaches by using advanced machine learning techniques. 
 The first limitation is that the current \testreuse approaches ignore visual information, and they only rely on text, which may not be sufficient. 
 In this project, we will leverage computer vision to address this limitation by combining visual and textual information.
-Additionally, we will use LLM models to incorporate web information that is integrated into them to improve \testreuse. 
+Additionally, we will use LLM models to incorporate web information that is integrated into their train set to improve \testreuse. 
 The second limitation is that current approaches explore the target application by relying on \tam, which is often incomplete.
 In contrast to model-based approaches that replaced the \tam with an RL agent, we will use RL to create a more comprehensive model.
 
 
 \subsubsection{Current Research Projects}
 
-Software testing is an important topic that is the subject of many research projects. The most relevant research projects that the applicant is aware of are the ERC and SNF projects. \textit{Testing the Untestable} (P.I. Lionel Briand) and \textit{Self-assessment Oracles for Anticipatory Testing} (P.I. Paolo Tonella) focus on the problem of testing machine learning, while this project uses machine learning to test GUI applications. \textit{A-Test Autonomic Testing} (P.I. Mauro Pezze) focuses on testing distributed systems in the production environment and uses machine learning for different types of applications and environments from this project. The first two projects are funded by ERC, and the last project is funded by SNSF. 
+Software testing is an important topic that is the subject of many research projects. The most relevant research projects that the applicant is aware of are the ERC and SNF projects. \textit{Testing the Untestable} (P.I. Lionel Briand) and \textit{Self-assessment Oracles for Anticipatory Testing} (P.I. Paolo Tonella) focus on the problem of testing machine learning, while this project uses machine learning to test GUI applications. \textit{A-Test Autonomic Testing} (P.I. Mauro Pezze) focuses on testing distributed systems in the production environment and uses machine learning for different types of applications and environments from this project. The first two projects are funded by ERC, and the last project is funded by SNF. 
 
 

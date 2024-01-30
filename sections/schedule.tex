@@ -4,9 +4,9 @@
 \input{tables/schedule-table.tex}
 
 Table~\ref{tab:research-plan} summarizes the schedule and milestones of the \project project.
-In our schedule, we achieve an objective by completing a milestone  consisting of three steps: Study, Experiments, and Report. 
- In the study phase, we will review the most recent works related to the objective of its milestone.
-In the experiment phase, we will gather a complete data set for training models,  identify subjects, and empirically evaluate the new approach. 
+In our schedule, we achieve an objective by completing a milestone  consisting of three steps: Study, Experiment, and Report. 
+ In the study phase, we will review the most recent works related to the milestone.
+In the experiment phase, we will gather: a complete data set for training models, build a new \testreuse approach, and empirically evaluate the approach. 
 In the report phase, we will submit the results of experimenting with our approaches in  the top research conferences and journals of Software Engineering.
 We explain the details of milestones below.
 
@@ -15,7 +15,7 @@ We explain the details of milestones below.
 \textbf{O1: Incorporating Internal Resources:}  
 
 \noindent
-In the study phase, we will review vision-based GUI testing  and widget recognition approaches. 
+In the study phase, we will review vision-based GUI testing~\cite{Hu:appflow:FSE:2018,zhao:Avgust:FSE:2022,YazdaniBanafsheDaragh:DEEPGUI:ASE:2021}  and widget recognition approaches~\cite{white:WidgetDetection:ISSTA:2019,zhu2021widgetrecog}. 
 We will examine the replication package and data sets of these studies, and in case of compatibility with our context, we will reuse them. 
 Otherwise, we will study image captioning and classification approaches to build our model for the \imagelabeler component.
 %\bigskip
@@ -31,7 +31,7 @@ We will transition from the study to the experiment phase by conducting a feasib
 We will investigate from suitable approaches that we identified which one is more promising in our context.
 To do so, we will experiment with different prototypes of \imagelabeler for semantic matching in isolation from the \testreuse,  similar to our previous study~\cite{mariani:SemFinder:ISSTA:2021}. 
 Then, we will integrate \imagelabeler in our \tme framework to create a new \testreuse approach named \visiontool\footnote{Horus is a god in ancient Egyptian mythology that symbolizes heightened vision.}.
-Additionally, we will use our\tme framework to evaluate \visiontool and comparing with the state-of-the-art \testreuse approaches.
+Additionally, we will use our~\tme framework to evaluate \visiontool and compare with the state-of-the-art \testreuse approaches.
 Finally, we will submit the results of our  feasibility study to a workshop conference and the result of the \testreuse experiments to a top software engineering conference. 
 
 %%% O2
@@ -42,10 +42,10 @@ Finally, we will submit the results of our  feasibility study to a workshop conf
 \textbf{O2: Incorporating External Resources:}  
 
 \noindent
-In the study phase, we will review LLM-based GUI testing approaches~\cite{Zimmermann:GPT3GUITest:2023:ICSTW, liu:GUIInputLLM:ICSE:2023} and prompt engineering, as a recent study shows tuning prompts improve code summarization  by 26\% on average~\cite{wang:prompt:FSE:2023}.
+In the study phase, we will review LLM-based GUI testing approaches~\cite{Zimmermann:GPT3GUITest:2023:ICSTW, liu:GUIInputLLM:ICSE:2023} and prompt engineering, as a recent study shows tuning prompts improve specialised tasks such as code summarization  by 26\% on average~\cite{wang:prompt:FSE:2023}.
 %\bigskip
 We will transition from the study phase to the experiment phase by conducting a feasibility study that examines different LLM models and prompt patterns.
-We will investigate the applicability of existing LLM models in the literature in our context or if we need to create a new model by fine-tuning them.
+We will investigate the applicability of existing LLM models in our context and if they require fine-tuning.
 We will examine different combinations of LLM models and prompt patterns to translate a limited number of test cases.
 We will manually inspect their quality and choose the most promising combination.
 After the feasibility study, we will integrate the \llmtranslator into our framework to create a new \testreuse approach named \llmtool\footnote{Hermes is a god in ancient Greek mythology that symbolizes linguistic prowess.}.
@@ -69,7 +69,7 @@ We will transition from the study to the experiment phase by  conducting a feasi
 After the feasibility study, we will  integrate the chosen \rlaganet in our framework to create a new \testreuse approach named \rltool\footnote{Athena is a goddess in ancient Greek mythology that symbolizes strategic intellect.
 }.
 \rltool subsumes \visiontool and \llmtool by  encompassing \imagelabeler and \llmtranslator components.
-Additionally, we will use our \tme framework to evaluate \rltool and compare it with the state-of-the-art \testreuse approaches.
+Additionally, we will use our \tme framework to evaluate \rltool and compare with the state-of-the-art \testreuse approaches.
 %We will evaluate the effectiveness of \rlaganet in three setups:
 %\begin{inparaenum}[a)]
 %	\item The agent only executes before \testreuse to make GUI model more complete
