@@ -1,24 +1,22 @@
 \subsubsection{Terminology}
-A Graphical User Interface is a forest of hierarchical windows and only one windows at a time is active to be used.
-Windows include atomic elements named widget that are characterize by attributes, such as text or location.
-At any given time, the active windows has a state that encompasses attribute values of all visible widgets.
-The type of widgets depends on their functionality and some of them expose user-actionable events.
+A Graphical User Interface is a forest of hierarchical windows, and only one window at a time is active to be used. Windows include atomic elements named widgets that are characterized by attributes such as text or location. At any given time, the active windows have a state that encompasses attribute values of all visible widgets. The type of widgets depends on their functionality, and some widgets expose user-actionable events. 
 
-A GUI event is an atomic human-computer interaction, such as click on a widget with the type of button.
+\smallskip
+A GUI event is an atomic human-computer interaction, such as clicking on a widget with the type of button.
 An oracle event checks the state of a widget. 
 For example, if a widget displays a specific text. 
 A GUI test case is a sequence of events $\langle e_1,..., e_n\rangle$ on widgets of active windows.
 A test execution results transitioning the state of the active windows $S_{0} \xrightarrow{e_1} S_1 \xrightarrow{e_2} S_2 \ldots \xrightarrow{e_n} S_{n}$ 
 %\), 
 where $S_{i-1}$ and $S_i$ denote the states of the active window before and after the execution of $e_i$, respectively. 
-A GUI model (\tam) is a directed graph where nodes correspond to GUI states  and edges correspond to events that transition the the source node (state before event) to the target node (state after the event).
+A GUI model (\tam) is a directed graph where nodes correspond to GUI states, and edges correspond to events that transition the source node (state before the event) to the target node (state after the event). 
+
 % Test Reuse
 
-\testreuse is the process of migrating test cases across apps with similar functionalities.
-\testreuse relies on semantic matching to find corresponding events from the source test case in the target application.
-Semantic matching process uses textual attributes of widgets to score similarity of events.
-The target test case may include stepping events, that are not corresponding to any events in the source test case, but they are required to reach relevant states.
-The source test cases may include unmatchable events, that are events not corresponding to any event in the target test case. 
-\testreuse handles stepping and unmatchable events by relying on \tam.
+\smallskip
+\testreuse is the process of migrating test cases across apps with similar functionalities. Test Reuse relies on semantic matching to find corresponding events from the source test case in the target application. The semantic matching process scores the similarity of events using textual attributes of widgets.
+The target test case may include stepping events that do not correspond to any events in the source test case but are required to reach relevant states. 
+The source test cases may include unmatchable events that do not correspond to any event in the target test case. 
+\testreuse handles stepping and unmatchable events relying on the \tam. 
 
 

@@ -3,76 +3,68 @@
 \input{sections/background.tex}
 
 \subsubsection{State of the art}
-GUI testing has been a popular field in software engineering for more than two decades. Researchers proposed many approaches that we classify into four categories:
- random-based, model-based, coverage-based, and  similarity-based.
-Random-based approaches take random actions to interact with  the GUI~\cite{machiry:dynodroid:FSE:2013,vos:testar:ijismd:2015,ermuth:monkey:ISSTA:2016}.
-Model-based approaches build a GUI model and generate test cases that cover the mode based on a coverage criteria~\cite{Nguyen:GUITAR:ASEJ:2014,Li:DroidiBot:ICSE-C:2017,Gu:PractivalTest:ICSE:2019,Choi:swift:OOPSLA:2013}. 
-Coverage-based approaches employ search based algorithm~\cite{Gross:exist:ISSTA:2012,mahmood:evodroid:FSE:2014,dong:TimaMachine:ICSE:2020} or symbolic execution  to generate test cases that maximizes code coverage~\cite{Ganov:GUIsymbolic:FMSE:2009,cheng:guicat:ASE:2016,Anand:conc:FSE:2012}.
-Similarity-based approaches use existing knowledge of testing a functionality of applications to generate test cases for applications with similar functionalities.
-All of the categories except for similarity-based are agnostic to semantics of the application under the test. 
-Non-semantic approaches generate many test cases quickly with high coverage, but they only reveal crashing faults and cannot expose functional faults.
+GUI testing has been a popular field in software engineering over the past two decades. Researchers proposed many approaches that we classify into four categories: random-based, model-based, coverage-based, and similarity-based.
+Random-based approaches take random actions to interact with the GUI~\cite{machiry:dynodroid:FSE:2013,vos:testar:ijismd:2015,ermuth:monkey:ISSTA:2016}.
+Model-based approaches build a GUI model and generate test cases that cover the mode based on coverage criteria~\cite{Nguyen:GUITAR:ASEJ:2014,Li:DroidiBot:ICSE-C:2017,Gu:PractivalTest:ICSE:2019,Choi:swift:OOPSLA:2013}. 
+Coverage-based approaches employ search-based algorithms~\cite{Gross:exist:ISSTA:2012,mahmood:evodroid:FSE:2014,dong:TimaMachine:ICSE:2020} or symbolic execution to generate test cases that maximize code coverage~\cite{Ganov:GUIsymbolic:FMSE:2009,cheng:guicat:ASE:2016,Anand:conc:FSE:2012}.
+Similarity-based approaches use existing knowledge of testing functionalities of applications to generate test cases for applications with similar functionalities.
+All the categories except for similarity-based are agnostic to the semantics of the application under the test. 
+Non-semantic approaches quickly generate many test cases with high coverage, but they only reveal crashing faults and cannot expose functional faults.
 
 % Pattern-
 \smallskip 
-Millions of applications share similar functionalities that create an opportunity of testing them in similar way.
+Millions of applications share similar functionalities that create an opportunity to test them similarly.
 For example, online booking of flights can be tested similarly across different applications. 
-Similarity-based approaches leverage this opportunity and generate test cases relevant to functionality of the applications.
+Similarity-based approaches leverage this opportunity and generate test cases relevant to the functionality of the applications.
 We classify similarity-based approaches into pattern-based and \testreuse.
-Pattern-based approaches consider patterns comprising abstract recurrent events and match  elements of the pattern to actual events in the target application~\cite{Moreira:pattern:ISSRE:2013,Morgado:Impact:HCI:2019}.
-They either consider a predefined set of patterns~\cite{Mariani:Augusto:ICSE:2018,Hu:appflow:FSE:2018}, or automatically extract patterns from traces of user interactions~\cite{linares:mining:MSR:2015,mao:crowd:ASE:2017,Mao:UserPattern:JSS:2021}.
-Crafting pattern manually requires substantial human effort, and extracting patterns automatically requires huge data.
+Pattern-based approaches consider patterns comprising abstract recurrent events and match elements of the pattern to actual events in the target application.~\cite{Moreira:pattern:ISSRE:2013,Morgado:Impact:HCI:2019}.
+They either consider a predefined set of patterns~\cite{Mariani:Augusto:ICSE:2018,Hu:appflow:FSE:2018} or automatically extract patterns from traces of user interactions~\cite{linares:mining:MSR:2015,mao:crowd:ASE:2017,Mao:UserPattern:JSS:2021}.
+Crafting patterns manually requires substantial human effort, while extracting patterns automatically requires enormous data.
 
 
 \smallskip 
-\testreuse approaches leverages semantic similarity of textual information available in the GUI to migrate test cases of an application (source) to another (target).
-Researchers proposed approaches to migrate test cases of the same  application across different platforms and different applications in the same platform. 
-TestMig migrates test cases from IOS version of an app to its Android version~\cite{Qin:testmig:ISSTA:2019}.
+\testreuse approaches leverage semantic similarity of textual information available in the GUI to migrate test cases of an application (source) to another (target).
+Researchers proposed approaches that migrate test cases of the same application across different platforms and different applications in the same platform. 
+TestMig migrates test cases from the IOS version of an app to its Android version~\cite{Qin:testmig:ISSTA:2019}.
 MAPIT migrates test cases bidirectionally between IOS and Android versions of the same app~\cite{talebipour:MAPIT:ASE:2021}.
 TransDroid migrates test cases of web apps to their Android version~\cite{lin:TransDroid:ICST:2022}.
- Rau et al. proposed migrating test cases in web applications by using semantic matching of GUI elements~\cite{rau:efficent:icse:2018}.
+ Rau et al. proposed migrating test cases in web applications  using semantic matching of GUI elements~\cite{rau:efficent:icse:2018}.
  \craftdroid migrates test cases across Android apps~\cite{lin:craftdroid:ASE:2019}.
 GUITestMigrator migrates test cases between prototype apps that share the same specifications.
-\atm is an extension of GUITestMigrator that mitigate test cases of real apps~\cite{Behrang:migration:ICSE:2018}.
+\atm is an extension of GUITestMigrator that migrates test cases of real apps~\cite{Behrang:migration:ICSE:2018}.
  \adaptdroid formulates \testreuse as a search problem and uses an evolutionary algorithm to explore the space of possible GUI test cases~\cite{Mariani:Adaptdroid:AST:2021}.
  
  
 \smallskip 
 Researchers exploited Machine Learning techniques to propose enhanced approaches in different categories of GUI test generation.
 %Vision
-APPFLOW uses computer vision to match elements of predefined patterns to elements of the GUI in the target application~\cite{Hu:appflow:FSE:2018}.
-AVGUST leverages computer vision to extract patterns from screen recording of users interacting with apps~\cite{zhao:Avgust:FSE:2022}.
-White et al. proposed a random approach that detects type of widgets from their visual appearance~\cite{white:WidgetDetection:ISSTA:2019}.
+APPFLOW uses computer vision to match elements of predefined patterns to the GUI elements of the target application~\cite{Hu:appflow:FSE:2018}.
+AVGUST leverages computer vision to extract patterns from screen recordings of users interacting with apps~\cite{zhao:Avgust:FSE:2022}.
+White et al. proposed a random approach that detects the type of widgets from their visual appearance~\cite{white:WidgetDetection:ISSTA:2019}.
 %%%%Their approach determines the widget type, such as the menu or text box. However, it does not provide information about the semantics of widgets.
-Zhu et al proposed an approach for identifying the intent of widgets~\cite{zhu2021widgetrecog}.
+Zhu et al. proposed an approach for identifying the intent of widgets~\cite{zhu2021widgetrecog}.
 %%%%However, their approach is not examined in the GUI testing context. 
 % RL
-DeepGUI uses deep reinforcement learning (RL) and computer vision to identify actionable events and select them~\cite{YazdaniBanafsheDaragh:DEEPGUI:ASE:2021}.
-Some approaches used reinforcement learning  to model behavior of the GUI and select events. 
+%%%%%%%%
+DeepGUI uses deep reinforcement learning (RL) and computer vision to identify and select actionable events~\cite{YazdaniBanafsheDaragh:DEEPGUI:ASE:2021}.
+Some approaches used reinforcement learning to model the behavior of the GUI and select events.
 AutoBlackTests~\cite{Mariani:ABT:STVR:2014} and A-test~\cite{Vuong:RLTest:A-Test:2018} use Q-Learning to generates test cases  for desktop and Andoroid apps, respectively.
-ARES uses deep learning to infer states similarities while previous approaches used tabular reinforcement learning~\cite{Romdhana:ARES:TOSEM:2022}.
-Recently Large Language Models (LLM) have been used to generate inputs for editable widget in random GUI testing~\cite{liu:GUIInputLLM:ICSE:2023}, and to transform natural language commands into GUI test cases~\cite{Zimmermann:GPT3GUITest:2023:ICSTW}. 
+ARES uses deep learning to infer state similarities, while previous approaches used tabular reinforcement learning~\cite{Romdhana:ARES:TOSEM:2022}.
+Recently, researchers used Large Language Models (LLM) to generate inputs for editable widgets in random GUI testing ~\cite{liu:GUIInputLLM:ICSE:2023} and to transform natural language commands into GUI test cases~\cite{Zimmermann:GPT3GUITest:2023:ICSTW}. 
 
 % limitations of current test reuse approaches
 
 \smallskip 
-\testreuse approaches are the most recent category of GUI test generations, which they can expose functional faults by exercising realistic scenarios.
-Our review of state of the art and our empirical studies of \testreuse~\cite{mariani:SemFinder:ISSTA:2021,khalili:DomainEmbedding:ICPC:2022} suggest  we can address limitations of current approaches by using advanced machine learning techniques.
-First limitation is that the current \testreuse approaches ignore visual information and thye only rely on text, which may not be sufficient. 
-In this project we will leverage computer vision to address this limitation by combining visual and textual information.
-Additionally, we will use LLM models to incorporate web information that is integrated in them to improve \testreuse. 
-Second limitation is that current approaches explore the target application by relying on \tam that is often incomplete.
-In contrast to model-based approaches that replaced the \tam with an RL agent, in this project we will use RL to create a more comprehensive model.
+\testreuse approaches are the most recent category of GUI test generations, which can expose functional faults by exercising realistic scenarios. Our review of the state of the art and our empirical studies of \testreuse~\cite{mariani:SemFinder:ISSTA:2021,khalili:DomainEmbedding:ICPC:2022} suggest we can address the limitations of current approaches by using advanced machine learning techniques. 
+The first limitation is that the current \testreuse approaches ignore visual information, and they only rely on text, which may not be sufficient. 
+In this project, we will leverage computer vision to address this limitation by combining visual and textual information.
+Additionally, we will use LLM models to incorporate web information that is integrated into them to improve \testreuse. 
+The second limitation is that current approaches explore the target application by relying on \tam, which is often incomplete.
+In contrast to model-based approaches that replaced the \tam with an RL agent, we will use RL to create a more comprehensive model.
 
 
 \subsubsection{Current Research Projects}
 
-%Software testing is an important topic that is subject of many research projects.
-Software testing is an important topic that is subject of many research projects.
-%The most relevant research projects that applicant is aware of include:
-The most relevant research projects that applicant is aware of include:
-\textit{Testing the Untestable} (P.I. Lionel Briand), and
-\textit{Self-assessment Oracles for Anticipatory Testing} (P.I. Paolo Tonella) are focus on problem of testing machine learning, while this project use machine learning to to test GUI applications.
-\textit{A-Test Autonomic Testing} (P.I. Mauro Pezze) focuses on testing distributed systems in the production environment, which also uses machine learning but for different type of applications and environment. 
-The first two project are funded by are ERC and last one by SNSF.
+Software testing is an important topic that is the subject of many research projects. The most relevant research projects that the applicant is aware of are the ERC and SNF projects. \textit{Testing the Untestable} (P.I. Lionel Briand) and \textit{Self-assessment Oracles for Anticipatory Testing} (P.I. Paolo Tonella) focus on the problem of testing machine learning, while this project uses machine learning to test GUI applications. \textit{A-Test Autonomic Testing} (P.I. Mauro Pezze) focuses on testing distributed systems in the production environment and uses machine learning for different types of applications and environments from this project. The first two projects are funded by ERC, and the last project is funded by SNSF. 
 
 
