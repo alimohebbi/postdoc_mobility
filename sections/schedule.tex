@@ -4,11 +4,11 @@
 \input{tables/schedule-table.tex}
 
 Table~\ref{tab:research-plan} summarizes the schedule and milestones of the \project project.
-In our schedule, we achieve an objective by completing a milestone  consisting of three steps: Study, Experiment, and Report. 
- In the study phase, we will review the most recent works related to the milestone.
+We will achieve a milestone corresponding to an objective by completing three steps: Study, Experiment, and Report. 
+ In the study phase, we will review the related works.
 In the experiment phase, we will gather: a complete data set for training models, build a new \testreuse approach, and empirically evaluate the approach. 
-In the report phase, we will submit the results of experimenting with our approaches in  the top research conferences and journals of Software Engineering.
-We explain the details of milestones below.
+In the report phase, we will submit the results of experimenting with our approaches in  the top research venues in Software Engineering.
+%We explain the details of milestones below.
 
 \smallskip
 \noindent
@@ -27,11 +27,16 @@ Otherwise, we will study image captioning and classification approaches to build
 %We will investigate the most popular choices that includes: ResNet~\cite{he:ResNet:CVPR:2016}, Inception~\cite{szegedy:inception:CVPR:2015}, MobileNet~\cite{howard:mobilenets:arxiv:2017}.
 %
 %\bigskip
+
+\smallskip
 We will transition from the study to the experiment phase by conducting a feasibility study. 
-We will investigate from suitable approaches that we identified which one is more promising in our context.
+%We will investigate from suitable approaches that we identified which one is more promising in our context.
+We will select the most promising technique for labeling  widgets that is suitable in our context.  
 To do so, we will experiment with different prototypes of \imagelabeler for semantic matching in isolation from the \testreuse,  similar to our previous study~\cite{mariani:SemFinder:ISSTA:2021}. 
 Then, we will integrate \imagelabeler in our \tme framework to create a new \testreuse approach named \visiontool\footnote{Horus is a god in ancient Egyptian mythology that symbolizes heightened vision.}.
 Additionally, we will use our~\tme framework to evaluate \visiontool and compare with the state-of-the-art \testreuse approaches.
+
+\smallskip
 Finally, we will submit the results of our  feasibility study to a workshop conference and the result of the \testreuse experiments to a top software engineering conference. 
 
 %%% O2
@@ -44,12 +49,16 @@ Finally, we will submit the results of our  feasibility study to a workshop conf
 \noindent
 In the study phase, we will review LLM-based GUI testing approaches~\cite{Zimmermann:GPT3GUITest:2023:ICSTW, liu:GUIInputLLM:ICSE:2023} and prompt engineering, as a recent study shows tuning prompts improve specialised tasks such as code summarization  by 26\% on average~\cite{wang:prompt:FSE:2023}.
 %\bigskip
+
+\smallskip
 We will transition from the study phase to the experiment phase by conducting a feasibility study that examines different LLM models and prompt patterns.
-We will investigate the applicability of existing LLM models in our context and if they require fine-tuning.
+%We will investigate the applicability of existing LLM models in our context and if they require fine-tuning.
 We will examine different combinations of LLM models and prompt patterns to translate a limited number of test cases.
 We will manually inspect their quality and choose the most promising combination.
 After the feasibility study, we will integrate the \llmtranslator into our framework to create a new \testreuse approach named \llmtool\footnote{Hermes is a god in ancient Greek mythology that symbolizes linguistic prowess.}.
 Additionally, we will use our \tme framework to evaluate \llmtool and compare with the state-of-the-art \testreuse approaches.
+
+\smallskip
 Finally, we will submit the results of our  feasibility study to a workshop conference and the result of the \testreuse experiments to a top software engineering conference. 
 
 
@@ -62,11 +71,13 @@ Finally, we will submit the results of our  feasibility study to a workshop conf
 
 \noindent
 %study
-In the study phase, we will review Reinforcement Learning based  GUI testing approaches~\cite{Mariani:GUI:STVR:2014,Vuong:RLTest:A-Test:2018,Pan:QTesting:ISSTA:2020,Romdhana:ARES:TOSEM:2022}. 
-We will identify suitable options for the RL approach, state presentation, and reward function.
+In the study phase, we will review Reinforcement Learning based  GUI testing approaches~\cite{Pan:QTesting:ISSTA:2020,Romdhana:ARES:TOSEM:2022}. 
+We will identify suitable options for the RL techniques, state presentation, and reward function.
 %Experiment
-We will transition from the study to the experiment phase by  conducting a feasibility study, in which we evaluate candidate \rlaganets performance based on the number of distinctive windows  explored in a given amount of time for a subset of our subjects. 
-After the feasibility study, we will  integrate the chosen \rlaganet in our framework to create a new \testreuse approach named \rltool\footnote{Athena is a goddess in ancient Greek mythology that symbolizes strategic intellect.
+
+\smallskip
+We will transition from the study to the experiment phase by  conducting a feasibility study, in which we evaluate the candidate \rlaganets performance based on the number of distinctive windows  explored in a given amount of time. 
+After the feasibility study, we will  integrate the best \rlaganet in our framework to create a new \testreuse approach named \rltool\footnote{Athena is a goddess in ancient Greek mythology that symbolizes strategic intellect.
 }.
 \rltool subsumes \visiontool and \llmtool by  encompassing \imagelabeler and \llmtranslator components.
 Additionally, we will use our \tme framework to evaluate \rltool and compare with the state-of-the-art \testreuse approaches.
@@ -76,6 +87,8 @@ Additionally, we will use our \tme framework to evaluate \rltool and compare wit
 %	\item The agent only executes when semantic matching is uncertain
 %	\item The agent executes both in the beginning and uncertain conditions.
 %\end{inparaenum}
+
+\smallskip
 Finally, we will submit the \rltool in a tool track of a conference and the result of the \testreuse experiments in a top software  engineering journal to conclude the project. 
 
 

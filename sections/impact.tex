@@ -13,18 +13,20 @@ Our approaches address the limitations and impact both research and industry as 
 \textbf{Research:}
 
 \noindent
-This project results mature \testreuse approaches, and it will impact the broader field of GUI testing by following contributions: 
+This project produces mature \testreuse approaches, and it will impact the broader field of GUI testing by following contributions: 
 \begin{inparaenum}[(i)]
 \item proposes a set of prompt patterns that formulates \testreuse as a prompt answering problem 
 \item proposes strategies for building comprehensive  \tam
 \item enhances the effectiveness of semantic matching techniques.
 \end{inparaenum}
+
+\smallskip
 The first two contributions impact model-based approaches from two aspects.
-First, integration of \tam in prompts opens a new direction of using LLM for model-based testing.
-Second, a comprehensive model improves coverage of generated test cases.
-Effective semantic matching influnce Test Repair and Pattern-based test generation, both of which rely on semantic matching.
-Test repair approaches find replacements for events that are broken in a test case between two versions of an app by matching the broken event to a semantically equivalent event in the new version.~\cite{Choudhary:Water:ETSE:2011,Stocco:VisualRepair:FSE:2018,Pan:Meter:TSE:2022}.
-Pattern-based approaches rely on semantic matching to match elements of an abstract pattern to actual events of the target application.
+First, integration of GUI model in prompts opens a new direction to use LLM for model-based testing.
+Second, a comprehensive model improves coverage of the  generated test cases.
+Effective semantic matching influnce Test Repair and Pattern-based approaches, both of which rely on semantic matching.
+Test repair approaches find replacements for events that are broken in a test case between two versions of an app by matching the broken event to a semantically equivalent event in the new version~\cite{Pan:Meter:TSE:2022}.
+Pattern-based approaches use semantic matching to match elements of an abstract pattern to events of the target app.
 
 
 \smallskip
@@ -32,14 +34,13 @@ Pattern-based approaches rely on semantic matching to match elements of an abstr
 \textbf{Industry:}
 
 \noindent
-The approaches we introduce in this project are applicable to all types of applications that include GUI interactions, such as E-commerce and mobile apps.
-E-commerce sales exceeded 6 trillion U.S. dollars worldwide~\footnote{\href{https://www.statista.com/topics/871/online-shopping/}{E-commerce worldwide - statistics \& facts}}, and
-the mobile app market reached revenue of 467 billion dollars in 2023~\footnote{\href{https://www.statista.com/outlook/dmo/app/worldwide}{Total revenue in the App market}}.
-These commercial sectors are just a subset of industries that depend on GUI applications, and the financial cost of software failure is substantial in them.
-In this project, we will create a standalone tool, \rltool, that developers can use to reveal functional faults and improve software quality.
-Ultimately, high-quality products increase business revenues.
+The approaches that we introduce in this project are applicable to all types of applications that include GUI interactions, such as E-commerce and mobile apps.
+E-commerce sales exceeded 6 trillion U.S. dollars worldwide~\footnote{\href{https://www.statista.com/topics/871/online-shopping/}{E-commerce worldwide - statistics \& facts}} in 2023.
+%These commercial sectors are just a subset of industries that depend on GUI applications, and the financial cost of software failure is substantial in them.
+The financial cost of software failure is substantial in these sectors.
+In this project, we will create a standalone tool, \rltool, that developers can use to reveal functional faults, improve software quality, and ultimately increase business revenues.
 %
 Additionally, we will introduce an effective semantic matching technique that is applicable not only in testing but also in business logic.
 Many organizations analyze available data on the web to make business decisions or provide insights. 
-However, various sources may represent the same data differently, which decreases analysis accuracy. 
-Developers can leverage semantic matching approaches to overcome this issues.
+Various sources may represent the same data differently, which decreases analysis accuracy. 
+Developers can leverage semantic matching approaches to overcome this issue.
